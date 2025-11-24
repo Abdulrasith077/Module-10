@@ -27,80 +27,45 @@ To develop a Python program that implements a Circular Queue:
 ---
 
 ## 💻 Program:
-```
-class CircularQueue:
-    def __init__(self, size=5):
-        self.size = size
-        self.queue = [None] * size
-        self.front = -1
-        self.rear = -1
-    
-    def is_full(self):
-        return (self.rear + 1) % self.size == self.front
-    
-    def is_empty(self):
-        return self.front == -1
-    
+~~~
+class MyCircularQueue():
+    def __init__(self, k):
+        self.k = k
+        self.queue = [None] * k
+        self.head = self.tail = -1
     def enqueue(self, data):
-        if self.is_full():
-            print("Queue is full. Cannot enqueue", data)
-            return False
-        if self.is_empty():
-            self.front = 0
-        self.rear = (self.rear + 1) % self.size
-        self.queue[self.rear] = data
-        return True
-    
-    def dequeue(self):
-        if self.is_empty():
-            print("Queue is empty. Cannot dequeue.")
-            return None
-        data = self.queue[self.front]
-        if self.front == self.rear:
-            self.front = -1
-            self.rear = -1
+        if ((self.tail + 1) % self.k == self.head):
+            print("The circular queue is full\n")
+        elif (self.head == -1):
+            self.head = 0
+            self.tail = 0
+            self.queue[self.tail] = data
         else:
-            self.front = (self.front + 1) % self.size
-        return data
-    
-    def display(self):
-        if self.is_empty():
-            print("Queue is empty.")
-            return []
-        elements = []
-        i = self.front
-        while True:
-            elements.append(self.queue[i])
-            if i == self.rear:
-                break
-            i = (i + 1) % self.size
-        return elements
+            self.tail = (self.tail + 1) % self.k
+            self.queue[self.tail] = data
+    #
+    def printCQueue(self):
+        if(self.head == -1):
+            print("No element in the circular queue")
+        elif (self.tail >= self.head):
+            for i in range(self.head, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
+        else:
+            for i in range(self.head, self.k):
+                print(self.queue[i], end=" ")
+            for i in range(0, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
+obj = MyCircularQueue(5)
+for i in range(5):
+    obj.enqueue(int(input()))
+obj.printCQueue()
+~~~
 
-cq = CircularQueue()
-print("Enter 3 values to enqueue:")
-for _ in range(3):
-    val = input("Value: ")
-    cq.enqueue(val)
-
-print("\nRemoving 3 values from the queue:")
-removed_values = []
-for _ in range(3):
-    removed = cq.dequeue()
-    if removed is not None:
-        removed_values.append(removed)
-
-print("Removed values:", removed_values)
-
-```
 ### Output:
-```
-Enter 3 values to enqueue:
-Value: 10
-Value: 20
-Value: 30
+<img width="503" height="393" alt="image" src="https://github.com/user-attachments/assets/62e229dc-75a7-4a48-8e38-287fbe4836f0" />
 
-Removing 3 values from the queue:
-Removed values: ['10', '20', '30']
-```
+
 ## Result:
-Hence implementation of a Circular Queue id done.
+Thus the output is verified.
