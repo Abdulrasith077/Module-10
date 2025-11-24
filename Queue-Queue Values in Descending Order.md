@@ -21,33 +21,24 @@ To write a Python program to:
 6. Sort the list in descending order.
 7. Print the updated list.
 
-## 🧪 Program: 
-```
-q = []
-n = int(input("Enter the number of elements to add to the queue: "))
-print("Enter the elements:")
-for _ in range(n):
-    val = int(input())
-    q.append(val)
-if len(q) >= 2:
-    q.pop(0)
-    q.pop(0)
-elif len(q) == 1:
-    q.pop(0)
-q.sort(reverse=True)
-print("Remaining elements in descending order:", q)
-```
-### Output:
-```
-Enter the number of elements to add to the queue: 5
-Enter the elements:
-10
-30
-5
-20
-15
-Remaining elements in descending order: [20, 15, 5]
-```
-## Result:
-Hence displayed values in descending order.
+## 🧪 Program:
+~~~
+from queue import PriorityQueue
+que=PriorityQueue()
+n=int(input())
+l=[]
+for i in range(n):
+    l.append(int(input()))
+for number in l:
+    que.put((-number, number))
+while not que.empty():
+    print(que.get()[1])
+~~~
 
+### Output:
+
+<img width="346" height="507" alt="image" src="https://github.com/user-attachments/assets/76e477d1-ae23-4f4a-aad0-2ff6f103a404" />
+
+
+## Result:
+Thus the output is verified.
