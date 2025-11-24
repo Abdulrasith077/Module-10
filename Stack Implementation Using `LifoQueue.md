@@ -1,6 +1,6 @@
-# Stack Implementation Using `LifoQueue` (Max Size 7) 🔄
+# Stack Implementation Using `LifoQueue` (Max Size 5) 🔄
 
-This Python program demonstrates a stack implemented using the `LifoQueue` class from the `queue` module. It allows up to 7 elements, checks if the stack is full, and then prints the elements in reverse (LIFO) order.
+This Python program demonstrates a stack implemented using the `LifoQueue` class from the `queue` module. It allows up to 5 elements, checks if the stack is full, and then prints the elements in reverse (LIFO) order.
 
 ## 🎯 Aim
 
@@ -13,7 +13,7 @@ To create a Python program that:
 ## 📋 Algorithm
 
 1. Import the `LifoQueue` class from the `queue` module.
-2. Create a stack with a maximum size of 7.
+2. Create a stack with a maximum size of 5.
 3. Read the number of elements (`n`) to be added to the stack.
 4. Loop `n` times:
    - Read a value from the user.
@@ -22,38 +22,20 @@ To create a Python program that:
 6. Use `get()` repeatedly to pop and print elements in reverse order.
 
 ## Program
-```
+~~~
 from queue import LifoQueue
-stack = LifoQueue(maxsize=7)
-n = int(input("Enter number of elements to push (max 7): "))
+stack = LifoQueue(maxsize=5)
+n= int(input())
 for i in range(n):
-    if not stack.full():
-        val = input(f"Enter value {i+1}: ")
-        stack.put(val)
-    else:
-        print("Stack is full! Cannot add more elements.")
-        break
-print("Is the stack full?", stack.full())
-print("\nStack elements in LIFO order:")
-while not stack.empty():
+    stack.put(input())
+print(stack.full())
+for i in range(n):
     print(stack.get())
-```
-## 🧪 Sample Input and Output
-```
-Enter number of elements to push (max 7): 5
-Enter value 1: apple
-Enter value 2: banana
-Enter value 3: cherry
-Enter value 4: date
-Enter value 5: elderberry
-Is the stack full? False
+~~~
 
-Stack elements in LIFO order:
-elderberry
-date
-cherry
-banana
-apple
-```
+## 🧪 Sample Input and Output
+<img width="359" height="416" alt="image" src="https://github.com/user-attachments/assets/8c7999c4-ec90-4cbf-95b3-05eeedc79734" />
+
+
 ## Result:
-Hence Stack Implementation using LifoQueue with LIFO behavior is done.
+Thus the output is verified.
